@@ -1,8 +1,7 @@
-package com.ll.springsecurity.controller;
+package com.ll.springsecurity.domain.member.member.controller;
 
 import com.ll.springsecurity.domain.member.member.entity.Member;
 import com.ll.springsecurity.domain.member.member.service.MemberService;
-import com.ll.springsecurity.domain.member.member.controller.ApiV1MemberController;
 import org.hamcrest.Matchers;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;

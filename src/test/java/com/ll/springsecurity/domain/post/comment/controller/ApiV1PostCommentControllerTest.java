@@ -1,8 +1,7 @@
-package com.ll.springsecurity.controller;
+package com.ll.springsecurity.domain.post.comment.controller;
 
 import com.ll.springsecurity.domain.member.member.entity.Member;
 import com.ll.springsecurity.domain.member.member.service.MemberService;
-import com.ll.springsecurity.domain.post.comment.controller.ApiV1PostCommentController;
 import com.ll.springsecurity.domain.post.comment.entity.PostComment;
 import com.ll.springsecurity.domain.post.post.entity.Post;
 import com.ll.springsecurity.domain.post.post.service.PostService;
