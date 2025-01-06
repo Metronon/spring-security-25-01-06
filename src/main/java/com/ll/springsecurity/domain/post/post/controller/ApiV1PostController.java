@@ -23,6 +23,7 @@ public class ApiV1PostController {
     private final Rq rq;
 
     @GetMapping("/mine")
+    @Transactional(readOnly = true)
     public PageDto<PostDto> mine(
             @RequestParam(defaultValue = "title") String searchKeywordType,
             @RequestParam(defaultValue = "") String searchKeyword,
@@ -38,17 +39,21 @@ public class ApiV1PostController {
     }
 
     @GetMapping
+    @Transactional(readOnly = true)
     public PageDto<PostDto> items(
+            @RequestParam(defaultValue = "title") String searchKeywordType,
+            @RequestParam(defaultValue = "") String searchKeyword,
             @RequestParam(defaultValue = "1") int page,
             @RequestParam(defaultValue = "10") int pageSize
     ) {
         return new PageDto<>(
-                postService.findByListedPaged(true, page, pageSize)
+                postService.findByListedPaged(true, searchKeywordType, searchKeyword, page, pageSize)
                         .map(PostDto::new)
         );
     }
 
     @GetMapping("/{id}")
+    @Transactional(readOnly = true)
     public PostWithContentDto item(@PathVariable long id) {
         Post post = postService.findById(id).get();
 
@@ -75,6 +80,7 @@ public class ApiV1PostController {
     }
 
     @PostMapping
+    @Transactional
     public RsData<PostWithContentDto> write(
             @RequestBody @Valid PostWriteReqBody reqBody
     ) {
@@ -133,6 +139,7 @@ public class ApiV1PostController {
 
 
     @DeleteMapping("/{id}")
+    @Transactional
     public RsData<Void> delete(
             @PathVariable long id
     ) {
